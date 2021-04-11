@@ -8,9 +8,9 @@ namespace xyLOGIX.Console.Engine
 {
     /// <summary>
     /// Provides definitions of events, methods, properties, as well as
-    /// services, that are shared among all <c>Engine</c> objects.
+    /// services, that are shared among all <c>ApplicationEngine</c> objects.
     /// </summary>
-    public abstract class EngineBase
+    public abstract class ApplicationEngineBase
     {
         /// <summary>
         /// Gets a reference to a
@@ -206,11 +206,11 @@ namespace xyLOGIX.Console.Engine
         /// <para />
         /// In the event that the
         /// <see
-        ///     cref="P:xyLOGIX.Console.Engine.EngineBase.ShouldReadInput" />
+        ///     cref="P:xyLOGIX.Console.Engine.ApplicationEngineBase.ShouldReadInput" />
         /// property is <see langword="false" />, this method is called
         /// immediately following the call to the
         /// <see
-        ///     cref="M:xyLOGIX.Console.Engine.EngineBase.InitApplication" />
+        ///     cref="M:xyLOGIX.Console.Engine.ApplicationEngineBase.InitApplication" />
         /// method.
         /// </remarks>
         protected abstract bool InitInstance();
@@ -254,7 +254,7 @@ namespace xyLOGIX.Console.Engine
         /// <summary>
         /// Initializes the list of command-line arguments found in the
         /// <see
-        ///     cref="P:xyLOGIX.Console.Engine.EngineBase.Arguments" />
+        ///     cref="P:xyLOGIX.Console.Engine.ApplicationEngineBase.Arguments" />
         /// property.
         /// </summary>
         /// <param name="args">
@@ -275,13 +275,13 @@ namespace xyLOGIX.Console.Engine
         /// <summary>
         /// Sets the streams referenced by the
         /// <see
-        ///     cref="P:xyLOGIX.Console.Engine.EngineBase.In" />
+        ///     cref="P:xyLOGIX.Console.Engine.ApplicationEngineBase.In" />
         /// ,
         /// <see
-        ///     cref="P:xyLOGIX.Console.Engine.EngineBase.Out" />
+        ///     cref="P:xyLOGIX.Console.Engine.ApplicationEngineBase.Out" />
         /// , and
         /// <see
-        ///     cref="P:xyLOGIX.Console.Engine.EngineBase.Error" />
+        ///     cref="P:xyLOGIX.Console.Engine.ApplicationEngineBase.Error" />
         /// properties to the
         /// values provided in the <paramref name="inputStream" />,
         /// <paramref
@@ -321,7 +321,7 @@ namespace xyLOGIX.Console.Engine
         /// <summary>
         /// Invocation harness for the
         /// <see
-        ///     cref="M:xyLOGIX.Console.Engine.EngineBase.InitInstance" />
+        ///     cref="M:xyLOGIX.Console.Engine.ApplicationEngineBase.InitInstance" />
         /// method.
         /// <para />
         /// This harness wraps the invocation in an exception handler and
@@ -331,7 +331,7 @@ namespace xyLOGIX.Console.Engine
         /// <returns>
         /// Result of the
         /// <see
-        ///     cref="M:xyLOGIX.Console.Engine.EngineBase.InitInstance" />
+        ///     cref="M:xyLOGIX.Console.Engine.ApplicationEngineBase.InitInstance" />
         /// method, or
         /// <see langword="false" /> if an exception was caught during execution.
         /// </returns>
