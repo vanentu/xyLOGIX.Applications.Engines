@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using xyLOGIX.Console.Engine.Constants;
+using xyLOGIX.Console.Engine.Interfaces;
 
 namespace xyLOGIX.Console.Engine
 {
@@ -10,7 +11,7 @@ namespace xyLOGIX.Console.Engine
     /// Provides definitions of events, methods, properties, as well as
     /// services, that are shared among all <c>ApplicationEngine</c> objects.
     /// </summary>
-    public abstract class ApplicationEngineBase
+    public abstract class ApplicationEngineBase : IApplicationEngine
     {
         /// <summary>
         /// Gets a reference to a

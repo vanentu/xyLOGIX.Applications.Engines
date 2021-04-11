@@ -90,6 +90,10 @@
       <Project>{B6DEE6F3-9D7E-4E41-AC45-319B40E4DFFF}</Project>
       <Name>xyLOGIX.Console.Engine.Constants</Name>
     </ProjectReference>
+    <ProjectReference Include="..\xyLOGIX.Console.Engine.Interfaces\xyLOGIX.Console.Engine.Interfaces.csproj">
+      <Project>{F43C96E7-175E-4806-A768-C889E3C854F9}</Project>
+      <Name>xyLOGIX.Console.Engine.Interfaces</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
