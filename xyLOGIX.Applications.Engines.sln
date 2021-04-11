@@ -1,13 +1,13 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31129.286
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "xyLOGIX.Console.Engine", "xyLOGIX.Console.Engine\xyLOGIX.Console.Engine.csproj", "{84C1F71A-AAA4-4A08-9728-19E710965E4D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "xyLOGIX.Applications.Engines", "xyLOGIX.Applications.Engines\xyLOGIX.Applications.Engines.csproj", "{84C1F71A-AAA4-4A08-9728-19E710965E4D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "xyLOGIX.Console.Engine.Interfaces", "xyLOGIX.Console.Engine.Interfaces\xyLOGIX.Console.Engine.Interfaces.csproj", "{F43C96E7-175E-4806-A768-C889E3C854F9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "xyLOGIX.Applications.Engines.Interfaces", "xyLOGIX.Applications.Engines.Interfaces\xyLOGIX.Applications.Engines.Interfaces.csproj", "{F43C96E7-175E-4806-A768-C889E3C854F9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "xyLOGIX.Console.Engine.Constants", "xyLOGIX.Console.Engine.Constants\xyLOGIX.Console.Engine.Constants.csproj", "{B6DEE6F3-9D7E-4E41-AC45-319B40E4DFFF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "xyLOGIX.Applications.Engines.Constants", "xyLOGIX.Applications.Engines.Constants\xyLOGIX.Applications.Engines.Constants.csproj", "{B6DEE6F3-9D7E-4E41-AC45-319B40E4DFFF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
