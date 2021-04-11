@@ -28,6 +28,12 @@ namespace xyLOGIX.Console.Engine
             new List<string>();
 
         /// <summary>
+        /// Gets the <see cref="T:xyLOGIX.Console.Engine.Constants.EngineType" />
+        /// value that specifies what type of application engine this object implements.
+        /// </summary>
+        public abstract EngineType EngineType { get; }
+
+        /// <summary>
         /// Gets a reference to an instance of
         /// <see
         ///     cref="T:System.IO.TextWriter" />
@@ -280,13 +286,14 @@ namespace xyLOGIX.Console.Engine
         /// <see
         ///     cref="P:xyLOGIX.Console.Engine.ApplicationEngineBase.Out" />
         /// , and
-        /// <see
-        ///     cref="P:xyLOGIX.Console.Engine.ApplicationEngineBase.Error" />
-        /// properties to the
-        /// values provided in the <paramref name="inputStream" />,
+        /// <see cref="P:xyLOGIX.Console.Engine.ApplicationEngineBase.Error" />
+        /// properties to the values provided in the
         /// <paramref
-        ///     name="outputStream" />
-        /// and <paramref name="errorStream" /> parameters.
+        ///     name="inputStream" />
+        /// , <paramref name="outputStream" /> and
+        /// <paramref
+        ///     name="errorStream" />
+        /// parameters.
         /// </summary>
         /// <param name="inputStream">
         /// (Required.) A <see cref="T:System.IO.TextReader" /> that represents
@@ -332,8 +339,8 @@ namespace xyLOGIX.Console.Engine
         /// Result of the
         /// <see
         ///     cref="M:xyLOGIX.Console.Engine.ApplicationEngineBase.InitInstance" />
-        /// method, or
-        /// <see langword="false" /> if an exception was caught during execution.
+        /// method, or <see langword="false" /> if an exception was caught during
+        /// execution.
         /// </returns>
         private bool InvokeInitInstance()
         {
