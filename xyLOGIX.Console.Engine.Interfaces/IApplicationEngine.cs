@@ -4,8 +4,8 @@ using System.IO;
 namespace xyLOGIX.Console.Engine.Interfaces
 {
     /// <summary>
-    /// Defines the publicly-exposed methods and properties of all Application
-    /// Engine objects.
+    /// Defines the publicly-exposed methods and properties of all
+    /// <c>ApplicationEngine</c> objects.
     /// </summary>
     public interface IApplicationEngine : IFixedEngineTypeObject
     {
