@@ -68,6 +68,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EngineBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -83,6 +84,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="1382_cogs.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\xyLOGIX.Console.Engine.Constants\xyLOGIX.Console.Engine.Constants.csproj">
+      <Project>{B6DEE6F3-9D7E-4E41-AC45-319B40E4DFFF}</Project>
+      <Name>xyLOGIX.Console.Engine.Constants</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
