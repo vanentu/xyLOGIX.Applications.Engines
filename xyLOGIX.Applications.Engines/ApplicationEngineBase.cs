@@ -14,6 +14,11 @@ namespace xyLOGIX.Applications.Engines
     public abstract class ApplicationEngineBase : IApplicationEngine
     {
         /// <summary>
+        /// Gets or sets the
+        /// </summary>
+        protected string UsageMessage { get; set; } = string.Empty;
+
+        /// <summary>
         /// Gets a reference to a
         /// <see
         ///     cref="T:System.Collections.Generic.List{System.String}" />
@@ -29,8 +34,11 @@ namespace xyLOGIX.Applications.Engines
             new List<string>();
 
         /// <summary>
-        /// Gets the <see cref="T:xyLOGIX.Applications.Engines.Constants.EngineType" />
-        /// value that specifies what type of application engine this object implements.
+        /// Gets the
+        /// <see
+        ///     cref="T:xyLOGIX.Applications.Engines.Constants.EngineType" />
+        /// value
+        /// that specifies what type of application engine this object implements.
         /// </summary>
         public abstract EngineType EngineType { get; }
 
@@ -41,7 +49,7 @@ namespace xyLOGIX.Applications.Engines
         /// that allows writing to the standard
         /// error stream.
         /// </summary>
-        public TextWriter Error { get; protected set; } = System.Console.Error;
+        public TextWriter Error { get; protected set; } = Console.Error;
 
         /// <summary>
         /// Gets a reference to an instance of
@@ -50,7 +58,7 @@ namespace xyLOGIX.Applications.Engines
         /// that allows reading from the
         /// standard input stream.
         /// </summary>
-        public TextReader In { get; protected set; } = System.Console.In;
+        public TextReader In { get; protected set; } = Console.In;
 
         /// <summary>
         /// Gets a reference to an instance of
@@ -59,7 +67,7 @@ namespace xyLOGIX.Applications.Engines
         /// that allows writing to the standard
         /// output stream.
         /// </summary>
-        public TextWriter Out { get; protected set; } = System.Console.Out;
+        public TextWriter Out { get; protected set; } = Console.Out;
 
         /// <summary>
         /// Gets a value that indicates whether the command-line input should be read.
@@ -77,11 +85,6 @@ namespace xyLOGIX.Applications.Engines
         /// the user to press any key to continue upon termination.
         /// </summary>
         public bool ShouldReadKey { get; protected set; } = true;
-
-        /// <summary>
-        /// Gets or sets the
-        /// </summary>
-        protected string UsageMessage { get; set; } = string.Empty;
 
         /// <summary>
         /// Defines the application's entry point.
@@ -200,6 +203,31 @@ namespace xyLOGIX.Applications.Engines
         protected virtual void InitApplication() { }
 
         /// <summary>
+        /// Initializes the list of command-line arguments found in the
+        /// <see
+        ///     cref="P:xyLOGIX.Applications.Engines.ApplicationEngineBase.Arguments" />
+        /// property.
+        /// </summary>
+        /// <param name="args">
+        /// (Required.) Reference to a collection of strings that consist of the
+        /// command-line arguments passed to this application, one argument per
+        /// element of the collection.
+        /// </param>
+        /// <remarks>
+        /// <b>NOTE:</b> If this method is overriden, the base class must be
+        /// called prior to any other processing being done.
+        /// </remarks>
+        /// <exception cref="T:System.ArgumentNullException">
+        /// Thrown if the required parameter, <paramref name="args" />, is passed
+        /// a <see langword="null" /> value.
+        /// </exception>
+        protected virtual void InitializeArguments(IEnumerable<string> args)
+        {
+            if (args == null) throw new ArgumentNullException(nameof(args));
+            Arguments = args.ToList();
+        }
+
+        /// <summary>
         /// Called to do processing either after all input has been processed or
         /// on its own.
         /// </summary>
@@ -259,35 +287,16 @@ namespace xyLOGIX.Applications.Engines
             => true;
 
         /// <summary>
-        /// Initializes the list of command-line arguments found in the
-        /// <see
-        ///     cref="P:xyLOGIX.Applications.Engines.ApplicationEngineBase.Arguments" />
-        /// property.
-        /// </summary>
-        /// <param name="args">
-        /// (Required.) Reference to a collection of strings that consist of the
-        /// command-line arguments passed to this application, one argument per
-        /// element of the collection.
-        /// </param>
-        /// <exception cref="T:System.ArgumentNullException">
-        /// Thrown if the required parameter, <paramref name="args" />, is passed
-        /// a <see langword="null" /> value.
-        /// </exception>
-        private void InitializeArguments(IEnumerable<string> args)
-        {
-            if (args == null) throw new ArgumentNullException(nameof(args));
-            Arguments = args.ToList();
-        }
-
-        /// <summary>
         /// Sets the streams referenced by the
         /// <see
         ///     cref="P:xyLOGIX.Applications.Engines.ApplicationEngineBase.In" />
         /// ,
         /// <see
         ///     cref="P:xyLOGIX.Applications.Engines.ApplicationEngineBase.Out" />
-        /// , and
-        /// <see cref="P:xyLOGIX.Applications.Engines.ApplicationEngineBase.Error" />
+        /// ,
+        /// and
+        /// <see
+        ///     cref="P:xyLOGIX.Applications.Engines.ApplicationEngineBase.Error" />
         /// properties to the values provided in the
         /// <paramref
         ///     name="inputStream" />
