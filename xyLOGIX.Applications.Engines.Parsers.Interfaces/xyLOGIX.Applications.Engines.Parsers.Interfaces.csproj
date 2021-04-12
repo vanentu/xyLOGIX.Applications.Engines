@@ -6,7 +6,7 @@
     <ApplicationIcon>1382_cogs.ico</ApplicationIcon>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <TargetFrameworkProfile />
-    <ProjectGuid>{F43C96E7-175E-4806-A768-C889E3C854F9}</ProjectGuid>
+    <ProjectGuid>{0E916860-9114-4775-B59D-107D92CF3240}</ProjectGuid>
     <NuGetPackageImportStamp></NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
@@ -64,10 +64,10 @@
     <StartupObject />
   </PropertyGroup>
   <PropertyGroup>
-    <AssemblyName>xyLOGIX.Applications.Engines.Interfaces</AssemblyName>
+    <AssemblyName>xyLOGIX.Applications.Engines.Parsers.Interfaces</AssemblyName>
   </PropertyGroup>
   <PropertyGroup>
-    <RootNamespace>xyLOGIX.Applications.Engines.Interfaces</RootNamespace>
+    <RootNamespace>xyLOGIX.Applications.Engines.Parsers.Interfaces</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="PostSharp, Version=6.9.3.0, Culture=neutral, PublicKeyToken=b13fd38b8f9c99d7, processorArchitecture=MSIL">
@@ -84,8 +84,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GlobalAspects.cs" />
-    <Compile Include="IApplicationEngine.cs" />
-    <Compile Include="IFixedEngineTypeObject.cs" />
+    <Compile Include="ICommandLineParser.cs" />
+    <Compile Include="IFixedCommandLineParserTypeObject.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -103,9 +103,13 @@
     <Content Include="1382_cogs.ico" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\xyLOGIX.Applications.Engines.Constants\xyLOGIX.Applications.Engines.Constants.csproj">
-      <Project>{B6DEE6F3-9D7E-4E41-AC45-319B40E4DFFF}</Project>
-      <Name>xyLOGIX.Applications.Engines.Constants</Name>
+    <ProjectReference Include="..\xyLOGIX.Applications.Engines.Parsers.Constants\xyLOGIX.Applications.Engines.Parsers.Constants.csproj">
+      <Project>{E950A4D3-B66A-4353-979B-608862953C9B}</Project>
+      <Name>xyLOGIX.Applications.Engines.Parsers.Constants</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\xyLOGIX.Applications.Engines.Parsers.Models.Interfaces\xyLOGIX.Applications.Engines.Parsers.Models.Interfaces.csproj">
+      <Project>{3FCD5CF8-DFBB-4198-AC21-3A4A5E05197C}</Project>
+      <Name>xyLOGIX.Applications.Engines.Parsers.Models.Interfaces</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
