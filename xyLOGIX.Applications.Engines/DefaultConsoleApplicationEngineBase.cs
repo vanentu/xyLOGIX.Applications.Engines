@@ -8,7 +8,7 @@ namespace xyLOGIX.Applications.Engines
     /// Console Application engines.
     /// </summary>
     public abstract class
-        DefaultCnsoleApplicationEngineBase<T> : ApplicationEngineBase<
+        DefaultConsoleApplicationEngineBase<T> : ApplicationEngineBase<
             T> where T : ApplicationEngineBase<T>, IApplicationEngine
     {
         /// <summary>

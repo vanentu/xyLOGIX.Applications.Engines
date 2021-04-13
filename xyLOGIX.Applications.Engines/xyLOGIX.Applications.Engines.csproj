@@ -7,7 +7,8 @@
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <TargetFrameworkProfile />
     <ProjectGuid>{84C1F71A-AAA4-4A08-9728-19E710965E4D}</ProjectGuid>
-    <NuGetPackageImportStamp></NuGetPackageImportStamp>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
     <DebugSymbols>true</DebugSymbols>
@@ -83,7 +84,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DefaultCnsoleApplicationEngineBase.cs" />
+    <Compile Include="DefaultConsoleApplicationEngineBase.cs" />
     <Compile Include="DefaultWindowsServiceApplicationEngineBase.cs" />
     <Compile Include="DefaultWinformApplicationEngineBase.cs" />
     <Compile Include="GlobalAspects.cs" />
