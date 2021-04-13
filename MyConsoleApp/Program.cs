@@ -15,7 +15,10 @@ namespace MyConsoleApp
         /// (Required.) Collection of strings, each of which is one of the
         /// command-line elements passed to the application.
         /// </param>
-        public static void Main(string[] args)
+        /// <returns>
+        /// The exit code of the application. Zero means success.
+        /// </returns>
+        public static int Main(string[] args)
             => GetApplicationEngine.For<MyConsoleApplicationEngine>(
                                        EngineType.DefaultConsole
                                    )
