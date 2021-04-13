@@ -9,7 +9,7 @@ namespace MyConsoleApp
     /// <summary>
     /// The engine for my console application.
     /// </summary>
-    public class MyConsoleApplicationEngine : DefaultCnsoleApplicationEngineBase
+    public class MyConsoleApplicationEngine : DefaultConsoleApplicationEngineBase
         <MyConsoleApplicationEngine>
     {
         /// <summary>
