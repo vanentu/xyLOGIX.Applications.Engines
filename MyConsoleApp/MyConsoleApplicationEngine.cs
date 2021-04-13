@@ -48,8 +48,7 @@ namespace MyConsoleApp
         /// <remarks>
         /// Overriding this method is optional.
         /// </remarks>
-        protected override void InitApplication()
-            => LoggingServices.DefaultBackend = new ConsoleLoggingBackend();
+        protected override void InitApplication() { }
 
         /// <summary>
         /// Called to do processing either after all input has been processed or
