@@ -36,7 +36,8 @@ namespace xyLOGIX.Applications.Engines
         /// Empty, protected constructor to prohibit direct allocation of this class.
         /// </summary>
         [Log(AttributeExclude = true)]
-        protected ApplicationEngineBase() { }
+        protected ApplicationEngineBase()
+            => InitApplication();
 
         /// <summary>
         /// Gets a reference to the one and only instance of
@@ -134,9 +135,9 @@ namespace xyLOGIX.Applications.Engines
         /// Child implementations should call the base class when overriding
         /// this method. The main reason for doing so is to customize the exit code.
         /// </remarks>
-        public virtual int Main(IEnumerable<string> args)
+        public virtual int Run(IEnumerable<string> args)
         {
-            var result = ExitCodes.FAILURE;
+            var result = ExitCodes.SUCESS;      // we want to try and succeed by default!
 
             try
             {
@@ -147,8 +148,6 @@ namespace xyLOGIX.Applications.Engines
                     PrintUsageMessage();
                     return ExitCodes.FAILURE;
                 }
-
-                InitApplication();
 
                 if (!ShouldReadInput)
                     return InvokeInitInstance()
@@ -228,13 +227,13 @@ namespace xyLOGIX.Applications.Engines
         /// Child implementations should call the base class when overriding
         /// this method. The main reason for doing so is to customize the exit code.
         /// </remarks>
-        public virtual int Main(IEnumerable<string> args,
+        public virtual int Run(IEnumerable<string> args,
             TextReader inputStream, TextWriter outputStream,
             TextWriter errorStream)
         {
             InitializeStreams(inputStream, outputStream, errorStream);
 
-            return Main(args);
+            return Run(args);
         }
 
         /// <summary>

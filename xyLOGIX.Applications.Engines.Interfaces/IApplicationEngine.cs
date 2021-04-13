@@ -83,7 +83,7 @@ namespace xyLOGIX.Applications.Engines.Interfaces
         /// Child implementations should call the base class when overriding
         /// this method. The main reason for doing so is to customize the exit code.
         /// </remarks>
-        int Main(IEnumerable<string> args);
+        int Run(IEnumerable<string> args);
 
         /// <summary>
         /// Defines the application's entry point.
@@ -124,7 +124,7 @@ namespace xyLOGIX.Applications.Engines.Interfaces
         /// Child implementations should call the base class when overriding
         /// this method. The main reason for doing so is to customize the exit code.
         /// </remarks>
-        int Main(IEnumerable<string> args, TextReader inputStream,
+        int Run(IEnumerable<string> args, TextReader inputStream,
             TextWriter outputStream, TextWriter errorStream);
     }
 }
