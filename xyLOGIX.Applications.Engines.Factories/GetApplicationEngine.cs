@@ -89,7 +89,7 @@ namespace xyLOGIX.Applications.Engines.Factories
 
                 default:
                     throw new ArgumentOutOfRangeException(
-                        nameof(type), type, "The type of application engine requested is not supported."
+                        nameof(type), type, $"The type of application engine requested, '{type}', is not supported."
                     );
             }
 
