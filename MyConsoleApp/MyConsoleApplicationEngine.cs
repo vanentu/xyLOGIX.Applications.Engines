@@ -1,4 +1,6 @@
-﻿using System;
+﻿using PostSharp.Patterns.Diagnostics;
+using PostSharp.Patterns.Diagnostics.Backends.Console;
+using System;
 using xyLOGIX.Applications.Engines;
 using xyLOGIX.Applications.Engines.Constants;
 
@@ -7,9 +9,48 @@ namespace MyConsoleApp
     /// <summary>
     /// The engine for my console application.
     /// </summary>
-    public class MyConsoleApplicationEngine : DefaultCnsoleApplicationEngineBase<
-        MyConsoleApplicationEngine>
+    public class MyConsoleApplicationEngine : DefaultCnsoleApplicationEngineBase
+        <MyConsoleApplicationEngine>
     {
+        /// <summary>
+        /// Called by the
+        /// <see
+        ///     cref="M:xyLOGIX.Applications.Engines.ApplicationEngineBase.Main" />
+        /// method in order to do processing prior to the termination of the
+        /// application, but after the per-instance logic has run.
+        /// </summary>
+        /// <param name="result">
+        /// (Required.) Exit code that has been determined by the rest of the application.
+        /// </param>
+        /// <returns>
+        /// Exit code to return to the operating system. Use
+        /// <see
+        ///     cref="F:xyLOGIX.Applications.Engines.Constants.ExitCodes.SUCESS" />
+        /// for success.
+        /// </returns>
+        /// <remarks>
+        /// The default implementation of this method does nothing but just pass
+        /// the input through.
+        /// </remarks>
+        protected override int ExitInstance(int result)
+        {
+            Console.ReadKey();
+            return
+                ExitCodes
+                    .SUCESS; // ignore exit code provided, just return success
+        }
+
+        /// <summary>
+        /// Called to perform application initialization once per execution.
+        /// <para />
+        /// This method is called prior to the processing of any input.
+        /// </summary>
+        /// <remarks>
+        /// Overriding this method is optional.
+        /// </remarks>
+        protected override void InitApplication()
+            => LoggingServices.DefaultBackend = new ConsoleLoggingBackend();
+
         /// <summary>
         /// Called to do processing either after all input has been processed or
         /// on its own.
@@ -58,31 +99,5 @@ namespace MyConsoleApp
         /// null or whitespace.
         /// </remarks>
         protected override void ProcessCurrentLine(string currentLine) { }
-
-        /// <summary>
-        /// Called by the
-        /// <see
-        ///     cref="M:xyLOGIX.Applications.Engines.ApplicationEngineBase.Main" />
-        /// method in order to do processing prior to the termination of the
-        /// application, but after the per-instance logic has run.
-        /// </summary>
-        /// <param name="result">
-        /// (Required.) Exit code that has been determined by the rest of the application.
-        /// </param>
-        /// <returns>
-        /// Exit code to return to the operating system. Use
-        /// <see
-        ///     cref="F:xyLOGIX.Applications.Engines.Constants.ExitCodes.SUCESS" />
-        /// for success.
-        /// </returns>
-        /// <remarks>
-        /// The default implementation of this method does nothing but just pass
-        /// the input through.
-        /// </remarks>
-        protected override int ExitInstance(int result)
-        {
-            Console.ReadKey();
-            return ExitCodes.SUCESS;    // ignore exit code provided, just return success
-        }
     }
 }
