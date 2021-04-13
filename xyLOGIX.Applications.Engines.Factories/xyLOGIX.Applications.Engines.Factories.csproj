@@ -6,7 +6,7 @@
     <ApplicationIcon>1382_cogs.ico</ApplicationIcon>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <TargetFrameworkProfile />
-    <ProjectGuid>{B6DEE6F3-9D7E-4E41-AC45-319B40E4DFFF}</ProjectGuid>
+    <ProjectGuid>{7B23CB1F-00EE-4F20-8B7D-01F74DEEA80B}</ProjectGuid>
     <NuGetPackageImportStamp></NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
@@ -64,10 +64,10 @@
     <StartupObject />
   </PropertyGroup>
   <PropertyGroup>
-    <AssemblyName>xyLOGIX.Applications.Engines.Constants</AssemblyName>
+    <AssemblyName>xyLOGIX.Applications.Engines.Factories</AssemblyName>
   </PropertyGroup>
   <PropertyGroup>
-    <RootNamespace>xyLOGIX.Applications.Engines.Constants</RootNamespace>
+    <RootNamespace>xyLOGIX.Applications.Engines.Factories</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="PostSharp, Version=6.9.3.0, Culture=neutral, PublicKeyToken=b13fd38b8f9c99d7, processorArchitecture=MSIL">
@@ -83,8 +83,8 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EngineType.cs" />
-    <Compile Include="ExitCodes.cs" />
+    <Compile Include="GetApplicationEngine.cs" />
+    <Compile Include="GlobalAspects.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -103,6 +103,20 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\xyLOGIX.Applications.Engines.Constants\xyLOGIX.Applications.Engines.Constants.csproj">
+      <Project>{B6DEE6F3-9D7E-4E41-AC45-319B40E4DFFF}</Project>
+      <Name>xyLOGIX.Applications.Engines.Constants</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\xyLOGIX.Applications.Engines.Interfaces\xyLOGIX.Applications.Engines.Interfaces.csproj">
+      <Project>{F43C96E7-175E-4806-A768-C889E3C854F9}</Project>
+      <Name>xyLOGIX.Applications.Engines.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\xyLOGIX.Applications.Engines\xyLOGIX.Applications.Engines.csproj">
+      <Project>{84C1F71A-AAA4-4A08-9728-19E710965E4D}</Project>
+      <Name>xyLOGIX.Applications.Engines</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

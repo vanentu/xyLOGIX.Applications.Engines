@@ -1,3 +1,4 @@
+using PostSharp.Patterns.Diagnostics;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -11,8 +12,39 @@ namespace xyLOGIX.Applications.Engines
     /// Provides definitions of events, methods, properties, as well as
     /// services, that are shared among all <c>ApplicationEngine</c> objects.
     /// </summary>
-    public abstract class ApplicationEngineBase : IApplicationEngine
+    /// <typeparam name="T">
+    /// Concrete type that you wish to inherit from this class. Must be a child
+    /// of <see cref="T:xyLOGIX.Applications.Engines.ApplicationEngineBase" />.
+    /// </typeparam>
+    public abstract class ApplicationEngineBase<T> : IApplicationEngine
+        where T : ApplicationEngineBase<T>, IApplicationEngine
     {
+        /// <summary>
+        /// Gets a reference to the one and only instance of
+        /// <see cref="T:xyLOGIX.Applications.Engines.ApplicationEngineBase" />.
+        /// </summary>
+        private static readonly Lazy<T> _theInstance =
+            new Lazy<T>(CreateInstanceOfT);
+
+        /// <summary>
+        /// Empty, static constructor to prohibit direct allocation of this class.
+        /// </summary>
+        [Log(AttributeExclude = true)]
+        static ApplicationEngineBase() { }
+
+        /// <summary>
+        /// Empty, protected constructor to prohibit direct allocation of this class.
+        /// </summary>
+        [Log(AttributeExclude = true)]
+        protected ApplicationEngineBase() { }
+
+        /// <summary>
+        /// Gets a reference to the one and only instance of
+        /// <see cref="T:xyLOGIX.Applications.Engines.ApplicationEngineBase" />.
+        /// </summary>
+        public static T Instance
+            => _theInstance.Value;
+
         /// <summary>
         /// Gets or sets the
         /// </summary>
@@ -104,7 +136,7 @@ namespace xyLOGIX.Applications.Engines
         /// </remarks>
         public virtual int Main(IEnumerable<string> args)
         {
-            int result;
+            var result = ExitCodes.FAILURE;
 
             try
             {
@@ -139,6 +171,19 @@ namespace xyLOGIX.Applications.Engines
                 OnException(ex);
 
                 result = ExitCodes.FAILURE;
+            }
+            finally
+            {
+                try
+                {
+                    result = ExitInstance(result);
+                }
+                catch (Exception ex)
+                {
+                    OnException(ex);
+
+                    result = ExitCodes.FAILURE;
+                }
             }
 
             return result;
@@ -191,6 +236,29 @@ namespace xyLOGIX.Applications.Engines
 
             return Main(args);
         }
+
+        /// <summary>
+        /// Called by the
+        /// <see
+        ///     cref="M:xyLOGIX.Applications.Engines.ApplicationEngineBase.Main" />
+        /// method in order to do processing prior to the termination of the
+        /// application, but after the per-instance logic has run.
+        /// </summary>
+        /// <param name="result">
+        /// (Required.) Exit code that has been determined by the rest of the application.
+        /// </param>
+        /// <returns>
+        /// Exit code to return to the operating system. Use
+        /// <see
+        ///     cref="F:xyLOGIX.Applications.Engines.Constants.ExitCodes.SUCESS" />
+        /// for success.
+        /// </returns>
+        /// <remarks>
+        /// The default implementation of this method does nothing but just pass
+        /// the input through.
+        /// </remarks>
+        protected virtual int ExitInstance(int result)
+            => result;
 
         /// <summary>
         /// Called to perform application initialization once per execution.
@@ -285,6 +353,17 @@ namespace xyLOGIX.Applications.Engines
         /// </remarks>
         protected virtual bool ValidateArguments()
             => true;
+
+        /// <summary>
+        /// Creates an instance of <typeparamref name="T" /> via reflection since
+        /// <typeparamref name="T" />'s constructor is expected to be protected.
+        /// </summary>
+        /// <returns>
+        /// Reference to the instance of <typeparamref name="T" /> that will be
+        /// used as the sole instance of this class.
+        /// </returns>
+        private static T CreateInstanceOfT()
+            => Activator.CreateInstance(typeof(T), true) as T;
 
         /// <summary>
         /// Sets the streams referenced by the
